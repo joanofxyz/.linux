@@ -1,0 +1,171 @@
+env:
+  TERM: alacritty
+
+shell:
+  program: /usr/bin/tmux
+  args:
+    - new-session
+    - -A
+    - -D
+    - -s
+    - main
+
+window:
+  startup_mode: Maximized
+  dynamic_title: true
+  title: Alacritty
+  class:
+    instance: Alacritty
+    general: Alacritty
+
+  decorations: none
+  dynamic_padding: true
+  padding:
+    x: 3
+
+scrolling:
+  history: 5000
+
+tabspaces: 2
+
+font_schemes:
+  ubuntu: &ubuntu
+    normal:
+      family: UbuntuMono Nerd Font
+      style: Regular
+    bold:
+      family: UbuntuMono Nerd Font
+      style: Bold
+    italic:
+      family: UbuntuMono Nerd Font
+      style: Regular Italic
+    bold_italic:
+      family: UbuntuMono Nerd Font
+      style: Bold Italic
+    size: 16
+    offset:
+      x: 0
+      y: 0
+
+  fira: &fira
+    normal:
+      family: Fira Mono Nerd Font
+      style: Light
+    bold:
+      family: Fira Mono Nerd Font
+      style: Bold
+    italic:
+      family: Fira Mono Nerd Font
+      style: Regular Italic
+    bold_italic:
+      family: Fira Mono Nerd Font
+      style: Bold Italic
+    size: 15
+    offset:
+      x: 0
+      y: 0
+
+font: *fira
+
+schemes:
+  oxocabron: &oxocabron
+    primary:
+      background: "#333333"
+      foreground: "#B5B5B5"
+    normal:
+      black:   "#2B2B2B"
+      red:     "#735E68"
+      yellow:  "#736A5E"
+      green:   "#68735E"
+      cyan:    "#5E736A"
+      blue:    "#5E6873"
+      magenta: "#6A5E73"
+      white:   "#C4C4C4"
+    bright:
+      black:   "#4A4A4A"
+      red:     "#7B425C"
+      yellow:  "#7B6142"
+      green:   "#5C7B42"
+      cyan:    "#427B61"
+      blue:    "#425C7B"
+      magenta: "#61427B"
+      white:   "#D4D4D4"
+    search:
+      matches:
+        foreground: "#363636"
+        background: "#a1a1a1"
+      focused_match:
+        foreground: "#363636"
+        background: "#756c5b"
+
+  gruvbox: &gruvbox
+    primary:
+      background: "#282828"
+      foreground: "#ebdbb2"
+    normal:
+      black:   "#282828"
+      red:     "#cc241d"
+      green:   "#98971a"
+      yellow:  "#d79921"
+      blue:    "#458588"
+      magenta: "#b16286"
+      cyan:    "#689d6a"
+      white:   "#a89984"
+    bright:
+      black:   "#928374"
+      red:     "#fb4934"
+      green:   "#b8bb26"
+      yellow:  "#fabd2f"
+      blue:    "#83a598"
+      magenta: "#d3869b"
+      cyan:    "#8ec07c"
+      white:   "#ebdbb2"
+    search:
+      matches:
+        foreground: "#282828"
+        background: "#ebdbb2"
+      focused_match:
+        foreground: "#282828"
+        background: "#689d6a"
+
+  # colors (miasma) https://github.com/xero/miasma.nvim
+  miasma: &miasma
+    primary:
+      background: "#222222"
+      foreground: "#c2c2b0"
+
+    normal:
+      black:      "#222222"
+      red:        "#685742"
+      green:      "#5f875f"
+      yellow:     "#b36d43"
+      blue:       "#78824b"
+      magenta:    "#bb7744"
+      cyan:       "#c9a554"
+      white:      "#d7c483"
+
+    bright:
+      black:      "#666666"
+      red:        "#685742"
+      green:      "#5f875f"
+      yellow:     "#b36d43"
+      blue:       "#78824b"
+      magenta:    "#bb7744"
+      cyan:       "#c9a554"
+      white:      "#d7c483"
+
+    indexed_colors:
+      - { index: 16, color: "0x222222" }
+
+colors: *oxocabron
+draw_bold_text_with_bright_colors: true
+
+key_bindings:
+  - { key: T,         mods: Control|Shift, action: CreateNewWindow                          }
+  - { key: L,         mods: Control,       action: ClearLogNotice                           }
+  - { key: L,         mods: Control,       chars: "\x0c",                 mode: ~Vi|~Search }
+  - { key: V,         mods: Super|Alt,     action: ToggleViMode                             }
+  - { key: C,         mods: Control|Shift, action: Copy                                     }
+  - { key: V,         mods: Control|Shift, action: Paste                                    }
+  - { key: Copy,      mods: None,          action: Copy                                     }
+  - { key: Paste,     mods: None,          action: Paste                                    }
