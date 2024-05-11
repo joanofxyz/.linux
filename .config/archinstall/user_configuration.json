@@ -1,0 +1,32 @@
+{
+    "hostname": "joan",
+    "bootloader": "grub-install",
+    "swap": true,
+    "kernels": [
+        "linux"
+    ],
+    "harddrives": [
+        "/dev/sda"
+    ],
+    "mirror-region": "Portugal",
+    "packages": [
+        "openssh"
+    ],
+    "services": [
+        "sshd"
+    ],
+    "nic": {
+        "type": "nm"
+    },
+    "ntp": true,
+    "audio": "pipewire",
+    "gfx_driver": "All open-source (default)",
+    "profile": "xorg",
+    "keyboard-layout": "pt-latin1",
+    "sys-encoding": "utf-8",
+    "sys-language": "en_US",
+    "timezone": "Europe/Lisbon",
+    "custom-commands": [
+        "echo '[D-BUS Service]\nName=org.freedesktop.Notifications\nExec=/usr/lib/notification-daemon-1.0/notification-daemon' > /usr/share/dbus-1/services/org.freedesktop.Notifications.service"
+    ]
+}
